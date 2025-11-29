@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.18)
+project(kmeans_gpu LANGUAGES CXX CUDA)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_BUILD_TYPE Release)
+
+add_executable(kmeans_gpu
+    src/main.cpp
+    src/kmeans_cuda.cu
+)
+
+target_include_directories(kmeans_gpu PRIVATE include)
+
+set_target_properties(kmeans_gpu PROPERTIES
+    CUDA_SEPARABLE_COMPILATION ON
+)
